@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
 var requestTracer = require('./middleware/tracer');
-var requestDispatcher = require('./middleware/dispatcher');
+var requestDispatcher = require('./dispatcher');
 
 const server = express();
 server.disable('x-powered-by');

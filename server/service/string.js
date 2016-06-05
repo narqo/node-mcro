@@ -18,6 +18,25 @@ class StringService {
     size(s) {
         return s.length;
     }
+
+    padStart(s, sLen, padS = ' ') {
+        // `String.prototype.padStart` anyone?
+        if (sLen < s.length) {
+            return s;
+        }
+        let res = '';
+        while (true) {
+            if (sLen & 1) {
+                res += padS;
+            }
+            sLen >>= 1;
+            if (sLen) {
+                padS += padS;
+            }
+            else break;
+        }
+        return res + s;
+    }
 }
 
 module.exports = StringService;

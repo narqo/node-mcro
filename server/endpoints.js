@@ -1,6 +1,6 @@
 'use strict';
 
-const toSvcArgs = data => data.s;
+const toSvcString = data => data.s;
 
 const fromSvcResult = (err, result = '') => ({ result, error: err });
 
@@ -16,20 +16,28 @@ const invokeSvc = (ctx, svc, method, ...args) => {
         ctx.stop();
     }
 
-    return [err, result];
+    return { err, result };
 };
 
-const createUpperCaseEndpoint = svc => (ctx, req) => {
-    const [err, result] = invokeSvc(ctx, svc, 'uppercase', toSvcArgs(req));
+const createUpperCaseEndpoint = svc => (ctx, data) => {
+    const { err, result } = invokeSvc(ctx, svc, 'uppercase', toSvcString(data));
     return fromSvcResult(err, result);
 };
 
-const createSizeEndpoint = svc => (ctx, req) => {
-    const [err, result] = invokeSvc(ctx, svc, 'size', toSvcArgs(req));
+const createLenEndpoint = svc => (ctx, data) => {
+    const { err, result } = invokeSvc(ctx, svc, 'size', toSvcString(data));
+    return fromSvcResult(err, result);
+};
+
+const createPadStartEndpoint = svc => (ctx, data) => {
+    const str = toSvcString(data);
+    const { len, sample } = data;
+    const { err, result } = invokeSvc(ctx, svc, 'padStart', str, len, sample);
     return fromSvcResult(err, result);
 };
 
 module.exports = {
     createUpperCaseEndpoint,
-    createSizeEndpoint,
+    createLenEndpoint,
+    createPadStartEndpoint,
 };

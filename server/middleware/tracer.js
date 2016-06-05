@@ -1,7 +1,7 @@
 'use strict';
 
 var jsonStringify = require('json-stringify-safe');
-var Context = require('../lib/context');
+var Context = require('../../lib/context');
 
 module.exports = () => function requestTracer(req, res, next) {
     const ctx = req.ctx = new Context();
@@ -14,7 +14,7 @@ module.exports = () => function requestTracer(req, res, next) {
 
     function done() {
         ctx.stop();
-        console.error(jsonStringify(req.ctx, null, 2));
+        console.error('tracer:', jsonStringify(req.ctx, null, 2));
     }
 
     function cleanup() {
