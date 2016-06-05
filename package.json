@@ -1,0 +1,30 @@
+{
+  "name": "node-mcro",
+  "version": "0.1.0",
+  "description": "toolkit for building microservices",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/narqo/node-mrco.git"
+  },
+  "keywords": [
+    "microservices",
+    "distributed systems"
+  ],
+  "author": "Vladimir Varankin <nek.narqo@gmail.com> (https://github.com/narqo)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/narqo/node-mrco/issues"
+  },
+  "homepage": "https://github.com/narqo/node-mrco#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "json-stringify-safe": "^5.0.1",
+    "node-uuid": "^1.4.7"
+  }
+}
